@@ -1,0 +1,78 @@
+object ImgSizeForm: TImgSizeForm
+  Left = 0
+  Top = 0
+  Caption = 'Image Size'
+  ClientHeight = 134
+  ClientWidth = 258
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 199
+    Top = 43
+    Width = 12
+    Height = 13
+    Caption = 'px'
+  end
+  object Label2: TLabel
+    Left = 199
+    Top = 75
+    Width = 12
+    Height = 13
+    Caption = 'px'
+  end
+  object Label3: TLabel
+    Left = 38
+    Top = 43
+    Width = 28
+    Height = 13
+    Caption = 'Width'
+  end
+  object Label4: TLabel
+    Left = 35
+    Top = 75
+    Width = 31
+    Height = 13
+    Caption = 'Heigth'
+  end
+  object Label5: TLabel
+    Left = 88
+    Top = 21
+    Width = 91
+    Height = 13
+    Caption = 'Choose image size '
+  end
+  object EditWidth: TEdit
+    Left = 72
+    Top = 40
+    Width = 121
+    Height = 21
+    NumbersOnly = True
+    TabOrder = 0
+    Text = '0'
+  end
+  object EditHeight: TEdit
+    Left = 72
+    Top = 72
+    Width = 121
+    Height = 21
+    NumbersOnly = True
+    TabOrder = 1
+    Text = '0'
+  end
+  object BitBtn1: TBitBtn
+    Left = 72
+    Top = 101
+    Width = 121
+    Height = 25
+    Kind = bkOK
+    NumGlyphs = 2
+    TabOrder = 2
+  end
+end

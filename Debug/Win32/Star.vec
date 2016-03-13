@@ -1,0 +1,3 @@
+Test
+ClassName=TPolygon|PenWidth=1|PenColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=321|Start.Y=187|DrawIt=-1|PointsCount=4|BtnTag=9|X0=321|Y0=57|X1=191|Y1=187|X2=321|Y2=317|X3=451|Y3=187|X4=321|Y4=57|BrushStyle=0|AngleCount=4|StartPointPX=321|StartPointPY=187|Radius=130,061523903113
+ClassName=TStarSHape|PenWidth=1|PenColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=467|Start.Y=171|DrawIt=-1|PointsCount=8|BtnTag=14|X0=467|Y0=79,0815838862784|X1=517|Y1=171|X2=608,918416113722|Y2=221|X3=517|Y3=271|X4=467|Y4=362,918416113722|X5=417|Y5=271|X6=325,081583886278|Y6=221|X7=417|Y7=171|X8=467|Y8=79,0815838862784|BrushStyle=0|AngleCount=4|StartPointPX=467|StartPointPY=221|R1=141,918416113722|R2=70,9592080568608

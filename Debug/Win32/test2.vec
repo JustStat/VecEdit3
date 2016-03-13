@@ -1,0 +1,4 @@
+Test
+ClassName=TRectangle|PenWidth=1|PenColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=110|Start.Y=307|DrawIt=-1|PointsCount=1|BtnTag=5|X0=110|Y0=120|X1=377|Y1=307|BrushStyle=0
+ClassName=TRectangle|PenWidth=1|PenColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=256|Start.Y=365|DrawIt=-1|PointsCount=1|BtnTag=5|X0=256|Y0=252|X1=429|Y1=365|BrushStyle=0
+ClassName=TRectangle|PenWidth=1|PenColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=79|Start.Y=212|DrawIt=-1|PointsCount=1|BtnTag=5|X0=79|Y0=161|X1=174|Y1=212|BrushStyle=0

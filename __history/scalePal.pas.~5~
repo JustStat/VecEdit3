@@ -1,0 +1,37 @@
+unit scalePal;
+
+interface
+
+uses
+  Windows, CLasses, SysUtils;
+
+type
+  TDoublePoint = record
+    X: Double;
+    Y: Double;
+  end;
+
+type
+  TZoomer = class
+
+  end;
+
+function DoublePoint(X, Y: Double): TDoublePoint;
+
+implementation
+
+{ TDoublePoint }
+
+function DoublePoint(X, Y: Double): TDoublePoint;
+begin
+  Result.X := X;
+  Result.Y := Y;
+end;
+
+function Wrld2Scrn(P: TDoublePoint): TPoint;
+begin
+  Result.X := Round((P.X - Dx) * Zoom);
+  Result.Y := Round((P.Y - Dy) * Zoom);
+end;
+
+end.

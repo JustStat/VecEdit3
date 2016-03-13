@@ -1,0 +1,47 @@
+unit UndoRedo;
+
+interface
+
+uses
+  Classes;
+
+type
+  TChangesRecorder = class
+  public
+    ChangesList: TList;
+    CurrentChange: integer;
+    procedure AddChange(Change: TStringList);
+    function SelectShange(ChangeId: integer): TStringList;
+    constructor Create;
+  end;
+
+implementation
+
+{ TChangesRecorder }
+
+procedure TChangesRecorder.AddChange(Change: TStringList);
+var
+  i: integer;
+begin
+  if CurrentChange <> ChangesList.Count - 1 then
+  begin
+   i:= CurrentCHange + 1;
+  repeat
+    ChangesList.Delete(i);
+  until CurrentChange = ChangesList.Count - 1;
+  end;
+  ChangesList.Add(Change);
+  CurrentChange := ChangesList.Count - 1;
+end;
+
+constructor TChangesRecorder.Create;
+begin
+  ChangesList := TList.Create;
+end;
+
+function TChangesRecorder.SelectShange(ChangeId: integer): TStringList;
+begin
+  Result := ChangesList.Items[ChangeId];
+end;
+
+end.

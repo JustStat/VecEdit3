@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.266,=C:\Users\Root\Desktop\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.089,=C:\Users\Root\Desktop\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.588,C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Palettee.pas=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.290,C:\Users\Root\Desktop\VectroEdit3\Unit1.pas=C:\Users\Root\Desktop\VectroEdit3\scale.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.268,C:\Users\Root\Desktop\VectroEdit3\scalePal.pas=C:\Users\Root\Desktop\VectroEdit3\scale.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.560,=C:\Users\1\Documents\RAD Studio\Projects\VectorEdit2\about.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.461,=C:\Users\1\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.595,=C:\Users\kirillvarlamov\Desktop\Многоугольники\VectroEdit3\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.436,C:\Users\1\Documents\RAD Studio\Projects\VectorEdit2\about.pas=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\about.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.423,C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\NewPalettee.pas=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Palettee.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.687,C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\vectoredit.dproj=C:\Users\1\Documents\RAD Studio\Projects\Project3.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.450,C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\main.pas=C:\Users\1\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.450,C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\main.dfm=C:\Users\1\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.185,C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\tools.pas=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.148,=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.984,=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.782,C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Unit1.pas=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\custompalette.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.121,=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.402,=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.705,C:\Users\kirillvarlamov\Desktop\Vector\VectroEdit3\Unit1.pas=C:\Users\kirillvarlamov\Desktop\Vector\VectroEdit3\Editors.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.358,C:\Users\kirillvarlamov\Desktop\Vector\VectroEdit3\Unit1.pas=C:\Users\kirillvarlamov\Desktop\Vector\VectroEdit3\URegions.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.412,C:\Users\1\Documents\RAD Studio\Projects\VectorEdit2\new.dfm=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\new.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.203,C:\Users\kirillvarlamov\Desktop\Многоугольники\VectroEdit3\ImageSizeForm.pas=C:\Users\kirillvarlamov\Desktop\Многоугольники\VectroEdit3\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.136,=C:\Users\kirillvarlamov\Desktop\Vector\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.137,=C:\Users\kirillvarlamov\Desktop\Vector\VectroEdit3\vectoredit.todo</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.436,C:\Users\1\Documents\RAD Studio\Projects\VectorEdit2\about.dfm=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\about.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.231,=C:\Users\kirillvarlamov\Desktop\Vector\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.803,=C:\Users\kirillvarlamov\Desktop\Vector\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.443,C:\Users\kirillvarlamov\Desktop\Многоугольники\VectroEdit3\NewPalettee.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.782,C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Unit1.dfm=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\custompalette.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.098,=C:\Users\kirillvarlamov\Desktop\Vector\VectroEdit3\scale.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.824,=C:\Users\1\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.292,C:\Users\Root\Desktop\VectroEdit3\new.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.951,C:\Users\Root\Desktop\VectroEdit3\scale.pas=C:\Users\Root\Desktop\VectroEdit3\scalePal.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.412,C:\Users\1\Documents\RAD Studio\Projects\VectorEdit2\new.pas=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\new.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.203,C:\Users\kirillvarlamov\Desktop\Многоугольники\VectroEdit3\ImageSizeForm.dfm=C:\Users\kirillvarlamov\Desktop\Многоугольники\VectroEdit3\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.137,C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\shapes.pas=C:\Users\1\Documents\RAD Studio\Projects\VectroEdit3\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.638,=C:\Users\1\Documents\RAD Studio\Projects\VectorEdit2\new.pas</Transaction>
+  </Transactions>
+</BorlandProject>

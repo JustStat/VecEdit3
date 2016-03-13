@@ -1,0 +1,50 @@
+unit new;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, sButton, sEdit, sSpinEdit, sLabel;
+
+type
+  Tf_new = class(TForm)
+    lbl_size: TsLabel;
+    lbl_height: TsLabel;
+    lbl_sizex: TsLabel;
+    lbl_width: TsLabel;
+    spin_height: TsSpinEdit;
+    spin_width: TsSpinEdit;
+    btn_createnew: TsButton;
+    procedure btn_createnewClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  f_new: Tf_new;
+
+implementation
+
+{$R *.dfm}
+
+uses main;
+
+procedure Tf_new.btn_createnewClick(Sender: TObject);
+begin
+  f_main.shp_border.Height := spin_height.Value + 2;
+  f_main.shp_border.Width := spin_width.Value + 2;
+  f_main.pb.Height := spin_height.Value;
+  f_main.pb.Width := spin_width.Value;
+  f_main.mm_clearClick(nil);
+  f_new.Close;
+end;
+
+procedure Tf_new.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  f_main.Enabled := true;
+end;
+
+end.

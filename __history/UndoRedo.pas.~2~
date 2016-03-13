@@ -1,0 +1,68 @@
+unit UndoRedo;
+
+interface
+
+ type
+    PElem = ^TElem;
+
+    TElem = record
+        x: integer;
+        next: PElem;
+    end;
+
+    TQueue = record
+        front, back: PElem;
+    end;
+
+implementation
+
+
+var
+    q: TQueue;
+
+procedure queue_create(var q: TQueue);
+begin
+    with q do begin
+        front := nil;
+        back := nil;
+    end;
+end;
+
+procedure queue_push(var q: TQueue; x: integer);
+var
+    t: PElem;
+begin
+    new(t);
+    t^.next := nil;
+    t^.x := x;
+    if q.back <> nil then begin
+        q.back^.next := t;
+    end else begin
+        q.front := t;
+    end;
+    q.back := t;
+end;
+
+procedure queue_pop(var q: TQueue);
+var
+    t: PElem;
+begin
+    if q.front <> nil then begin
+        t := q.front;
+        q.front := q.front^.next;
+        dispose(t);
+        if q.front = nil then
+            q.back := nil;
+    end;
+end;
+
+function queue_front(q: TQueue): integer;
+begin
+    if q.front <> nil then
+        result := q.front^.x
+    else
+        result := -1;
+end;
+end.
+
+

@@ -1,0 +1,29 @@
+unit TransMemo;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls;
+
+type
+  TMemo1 = class(TMemo)
+  private
+    { Private declarations }
+  protected
+    { Protected declarations }
+  public
+    { Public declarations }
+  published
+    { Published declarations }
+  end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('MyComponents', [TMemo1]);
+end;
+
+end.

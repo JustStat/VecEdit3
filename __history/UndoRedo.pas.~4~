@@ -1,0 +1,83 @@
+unit UndoRedo;
+
+interface
+
+uses
+  Classes;
+
+type
+  PElem = ^TElem;
+
+  TElem = record
+    Shapes: TStringList;
+    next: PElem;
+  end;
+
+  TQueue = record
+    front, back: PElem;
+  end;
+
+type
+  ChangesRecorder = class
+  public
+    procedure queue_create(var q: TQueue);
+    procedure queue_push(var q: TQueue; Shapes: TStringList);
+    procedure queue_pop(var q: TQueue);
+    function queue_front(q: TQueue): TStringList;
+  end;
+
+implementation
+
+var
+  Changes: TQueue;
+
+procedure ChangesRecorder.queue_create(var q: TQueue);
+begin
+  with q do
+  begin
+    front := nil;
+    back := nil;
+  end;
+end;
+
+procedure ChangesRecorder.queue_push(var q: TQueue; Shapes: TStringList);
+var
+  t: PElem;
+begin
+  new(t);
+  t^.next := nil;
+  t^.Shapes := Shapes;
+  if q.back <> nil then
+  begin
+    q.back^.next := t;
+  end
+  else
+  begin
+    q.front := t;
+  end;
+  q.back := t;
+end;
+
+procedure ChangesRecorder.queue_pop(var q: TQueue);
+var
+  t: PElem;
+begin
+  if q.front <> nil then
+  begin
+    t := q.front;
+    q.front := q.front^.next;
+    dispose(t);
+    if q.front = nil then
+      q.back := nil;
+  end;
+end;
+
+function ChangesRecorder.queue_front(q: TQueue): TStringList;
+begin
+  if q.front <> nil then
+    result := q.front^.Shapes
+  else
+    result := nil;
+end;
+
+end.

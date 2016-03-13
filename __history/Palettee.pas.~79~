@@ -1,0 +1,78 @@
+unit Palettee;
+
+interface
+
+uses Windows, SysUtils, Classes, Graphics, shapes, Dialogs;
+
+implementation
+
+type
+  TFPalettee = class
+  public
+    CanvasOut: TCanvas;
+    Colors: array of TColor;
+    Rects: TFShapeList;
+    Dialog: TColorDialog;
+    procedure AddColor(Color: TColor; Index: Integer = -1);
+    // procedure Select(Index: Integer);
+    // procedure LoadFromFile(Path: string);
+    // procedure SaveToFile(Path: string);
+    procedure Free;
+    constructor Create(const Source: TCanvas; SourceDialog: TColorDialog);
+  end;
+
+constructor TFPalettee.Create(const Source: TCanvas;
+  SourceDialog: TColorDialog);
+const
+  ColorsCount = 40;
+var
+  Step: Integer;
+  Tmp: TColor;
+begin
+  inherited Create;
+  CanvasOut := Source;
+  Dialog := SourceDialog;
+  Rects := TFShapeList.Create;
+end;
+
+procedure TFPalettee.Free;
+begin
+  Rects.Free;
+  inherited Free;
+end;
+
+procedure TFPalettee.AddColor(Color: TColor; Index: Integer = -1);
+var
+  Tmp: TFRect;
+  X1, X2, Y1, Y2: Integer;
+begin
+  SetLength(Colors, Length(Colors) + 1);
+  Colors[ High(Colors)] := Color;
+  if Index = -1 then
+  begin
+    Y1 := 1;
+    X1 := ((Length(Colors) - 1) div 2) * 16 + 1;
+    if ((Length(Colors) - 1) mod 2) = 1 then
+    begin
+      Dec(X1, 16);
+      Y1 := 17;
+    end;
+    X2 := X1 + 15;
+    Y2 := Y1 + 15;
+  end;
+  Tmp := TFRect.Create(CanvasOut);
+  Rects.Add(Tmp);
+  with Rects.List[Rects.Count - 1] do
+  begin
+    PointStart := Point(X1, Y1);
+    PointEnd := Point(X2, Y2);
+    BrushF.Color := Color;
+    BrushF.Style := bsSolid;
+    PenF.Color := clBlue;
+    PenF.Width := 1;
+    PenF.Style := psSolid;
+    Draw;
+  end;
+end;
+
+end.

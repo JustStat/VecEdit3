@@ -1,0 +1,163 @@
+unit scale;
+
+interface
+
+uses
+  Windows, CLasses, SysUtils, sScrollBar, math;
+
+type
+  TDoublePoint = record
+    X: Double;
+    Y: Double;
+  end;
+
+type
+  TDoubleRect = record
+    L: Double;
+    U: Double;
+    R: Double;
+    D: Double;
+  end;
+
+type
+  TZoomer = class
+  public
+    Vert: TsScrollBar; { AlphaSkins }
+    Horz: TsScrollBar;
+    Offset: TPoint;
+    Zoom: Double;
+    FullImageSize : TDoubleRect;
+    PBSize: TPoint;
+    function Scrn2Wrld(Ax, Ay: integer): TDoublePoint;
+    function Wrld2Scrn(P: TDoublePoint): TPoint;
+    function W2S(ADRect: TDoubleRect): TRect;
+    procedure SetZoom(nZoom: Double; X, Y: integer);
+    procedure SetRectZoom(ARect: TDoubleRect);
+    procedure CenterZoom(ARect: TRect);
+    procedure SetScrolls;
+    procedure Clear;
+    constructor Create;
+  end;
+
+function DoublePoint(X, Y: Double): TDoublePoint;
+function DoubleRect(A, B: TDoublePoint): TDoubleRect;
+
+const
+  MaxZoom = 10;
+  MinZoom = 0.01;
+
+implementation
+
+{ TDoublePoint }
+
+function DoublePoint(X, Y: Double): TDoublePoint;
+begin
+  Result.X := X;
+  Result.Y := Y;
+end;
+
+function DoubleRect(A, B: TDoublePoint): TDoubleRect;
+begin
+  Result.L := A.X;
+  Result.R := B.X;
+  Result.U := A.Y;
+  Result.D := B.Y;
+end;
+
+function TZoomer.W2S(ADRect: TDoubleRect): TRect;
+begin
+  Result.TopLeft := Wrld2Scrn(DoublePoint(ADRect.L, ADRect.U));
+  Result.BottomRight := Wrld2Scrn(DoublePoint(ADRect.R, ADRect.D));
+end;
+
+{ TZoomer }
+constructor TZoomer.Create;
+begin
+  Offset := Point(0, 0);
+  Zoom := 1;
+end;
+
+procedure TZoomer.CenterZoom(ARect: TRect);
+begin
+    if (ARect.Right - ARect.Left = 0) or (ARect.Bottom - ARect.Top = 0) then exit;
+    OffSet.X := OffSet.X - ((PBSize.X)div 2 - ARect.Left -
+                (ARect.Right - ARect.Left) div 2);
+    OffSet.Y := OffSet.Y - ((PBSize.Y) div 2 - ARect.Top -
+                (ARect.Bottom - ARect.Top) div 2);
+  end;
+
+procedure TZoomer.Clear;
+begin
+
+end;
+
+function TZoomer.Wrld2Scrn(P: TDoublePoint): TPoint;
+begin
+  Result.X := Round(P.X * Zoom) - Offset.X;
+  Result.Y := Round(P.Y * Zoom) - Offset.Y;
+end;
+
+function TZoomer.Scrn2Wrld(Ax, Ay: integer): TDoublePoint;
+begin
+  Result.X := (Ax + Offset.X) / Zoom;
+  Result.Y := (Ay + Offset.Y) / Zoom;
+end;
+
+procedure TZoomer.SetZoom(nZoom: Double; X, Y: integer);
+var
+  Fixed: TDoublePoint;
+begin
+  Fixed := Scrn2Wrld(X, Y);
+  Zoom := nZoom;
+  Offset.X := Offset.X + (Wrld2Scrn(Fixed).X - X);
+  Offset.Y := Offset.Y + (Wrld2Scrn(Fixed).Y - Y);
+  SetScrolls;
+end;
+
+procedure TZoomer.SetRectZoom(ARect: TDoubleRect);
+begin
+  with ARect do begin
+    if (R - L = 0) or (D - U = 0) then exit;
+    //if (Right - Left) > (Bottom - Top) then
+     // Zoom := Zoom * (PBSize.X)/ (Right - Left);
+    //else
+     // Zoom := Zoom * (PBSize.Y) / (Bottom - Top);
+     //if Min((PBSize.X )/(Right - Left), (PBSize.Y) / (Bottom - Top)) > 0 then
+      // exit;
+     // if Min((PBSize.X )/(Right - Left), (PBSize.Y) / (Bottom - Top)) >= 1 then
+        // exit;
+     Zoom := Min(PBSize.X / (R - L), PBSize.Y / (D - U));
+     Zoom := EnsureRange(Zoom, MinZoom, MaxZoom);
+     Offset.X := Round(ARect.L * Zoom);
+     Offset.Y := Round(ARect.U  * Zoom);
+  end;
+  SetSCrolls;
+end;
+
+procedure TZoomer.SetScrolls;
+const
+  OutBorder = 20;
+begin
+  if (Horz = nil) or (Vert = nil) then
+    exit;
+  Horz.PageSize := 1;
+  Horz.Min := -maxint;
+  Horz.Max := Round(FullImageSize.R / Zoom) + OutBorder;
+  Horz.Min := Round(FullImageSize.L / Zoom) - OutBorder;
+  Horz.Position := Offset.X ;
+  //if PBSize.X <= Horz.Max - Horz.Min then
+    Horz.PageSize := Round(PBSize.X / Zoom);
+  //else
+    //Horz.PageSize := Round((FullImageSize.R -FullImageSize.L) - PBSize.X){(Max(Horz.Max, Horz.Min) - Min(Horz.Min, Horz.Min)) div 2};
+  Vert.PageSize := 1;
+  Vert.Min := -maxint;
+  Vert.Max := Round(FullImageSize.D / Zoom + OutBorder);
+  Vert.Min := Round(FullImageSize.U / Zoom - OutBorder);
+  Vert.Position := Offset.Y;
+  //if PBSize.Y <= Vert.Max - Vert.Min then
+    Vert.PageSize := Round(PBSize.Y / Zoom);
+  //else
+   // Vert.PageSize := Round((FullImageSize.D - FullImageSize.U) - PbSize.Y){(Max(Vert.Max, Vert.Min) - Min(Vert.Min, Vert.Min)) div 2};
+end;
+
+end.

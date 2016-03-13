@@ -1,0 +1,57 @@
+unit custompalette;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, sButton, sSpinEdit, sLabel, sEdit, sCheckBox;
+
+type
+  Tf_createpal = class(TForm)
+    edit_start: TsEdit;
+    lbl_start: TsLabel;
+    edit_step: TsEdit;
+    lbl_step: TsLabel;
+    spin_count: TsSpinEdit;
+    lbl_count: TsLabel;
+    btn_create: TsButton;
+    procedure btn_createClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  f_createpal: Tf_createpal;
+
+implementation
+
+{$R *.dfm}
+
+uses main;
+
+procedure Tf_createpal.btn_createClick(Sender: TObject);
+var
+  i: integer;
+  Tmp, step: TColor;
+begin
+  with f_main.Palette do
+  begin
+    for i := 1 to Rects.Count do
+      Rects.Delete(Rects.Count - 1);
+    Tmp := StringToColor(edit_start.text);
+    step := StringToColor(edit_step.text);
+    i := 1;
+    while i <= spin_count.Value do
+    begin
+      AddColor(Tmp);
+      inc(i);
+      Tmp := Tmp + step;
+    end;
+  end;
+  f_main.colors.Invalidate;
+  f_createpal.Close;
+end;
+
+end.

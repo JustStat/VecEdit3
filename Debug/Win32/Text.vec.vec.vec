@@ -1,0 +1,4 @@
+Test
+ClassName=TText|TextFontStyle=3|TextFontSize=26|TextFontName=202|TextFontColor=$00008EFF|Start.X=127|Start.Y=379|DrawIt=-1|PointsCount=1|BtnTag=0|StringsCount=3|0=ccccccccccccccc|1=dfssdfdfsdfsdf|2=sdfsdfdfdsfsdfsdfdsfdsfdsfds|3=fdsfdsfdsfdsfdsfdsfdsfdsf|
+ClassName=TText|TextFontStyle=0|TextFontSize=26|TextFontName=199|TextFontColor=clBlack|Start.X=182|Start.Y=392|DrawIt=-1|PointsCount=1|BtnTag=0|StringsCount=3|0=ccccccccccccccc|1=dfssdfdfsdfsdf|2=sdfsdfdfdsfsdfsdfdsfdsfdsfds|3=fdsfdsfdsfdsfdsfdsfdsfdsf|
+ClassName=TRectangle|PenWidth=1|PenColor=clYellow|PenStyle=0|BrushColor=clWhite|Start.X=76|Start.Y=361|DrawIt=-1|PointsCount=1|BtnTag=5|X0=76|Y0=201|X1=293|Y1=361|BrushStyle=0

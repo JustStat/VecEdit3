@@ -1,0 +1,212 @@
+unit NewPalettee;
+
+interface
+
+uses Windows, SysUtils, Classes, Graphics, shapes, scale;
+
+type
+  TFPalette = class
+  private
+    Rects: TFShapeList;
+    CanvasOut: TCanvas;
+  public
+    SelectedColor: Integer;
+    IHeigth: Integer;
+    Zoomer: TZoomer;
+    PalColors: Array of TColor;
+    function Select(Index: Integer): TColor;
+    function GetIndex(X, Y: Integer): Integer;
+    function Scroll(Tag, PWidth: Integer): boolean;
+    procedure ClearPalette;
+    procedure AddColor(Color: TColor);
+    procedure Delete(Index: Integer);
+    procedure Draw;
+    procedure LoadFromFile(Path: string);
+    procedure SaveToFile(Path: string);
+    procedure DoSelection(Index: Integer);
+    procedure Free;
+    constructor Create(Canvas: TCanvas; sIHeigth: Integer);
+  end;
+
+implementation
+
+constructor TFPalette.Create(Canvas: TCanvas; sIHeigth: Integer);
+
+const
+  ColorsCount = 20;
+
+var
+  i: Integer;
+  Tmp, Step: TColor;
+begin
+  IHeigth := sIHeigth;
+  SelectedColor := -1;
+  CanvasOut := Canvas;
+  Tmp := $FFFFFF;
+  Step := $000001;
+  Zoomer := TZoomer.Create;
+  Rects := TFShapeList.Create(Zoomer);
+  for i := 1 to ColorsCount do
+  begin
+    AddColor(Tmp);
+    Tmp := Tmp + Step;
+  end;
+end;
+
+procedure TFPalette.Free;
+begin
+  Rects.Free;
+  Zoomer.Free;
+  inherited Free;
+end;
+
+procedure TFPalette.ClearPalette;
+begin
+  SetLength(PalColors, 0);
+  Rects.Clear;
+end;
+
+procedure TFPalette.DoSelection(Index: Integer);
+begin
+  if (Index < 0) or (Index > high(PalColors)) then
+    exit;
+  with (Rects.Items[Index] as TRectangle) do
+    with CanvasOut do
+    begin
+      Brush.Style := bsCLear;
+      Pen.Style := psSolid;
+      Pen.Color := clBlue;
+      Pen.Width := 1;
+      Rectangle(Trunc(PointStart.X), Trunc(PointStart.Y), Trunc(PointEnd.X),
+        Trunc(PointEnd.Y));
+      Pen.Color := clWhite;
+      Rectangle(Trunc(PointStart.X) + 1, Trunc(PointStart.Y) + 1,
+        Trunc(PointEnd.X) - 1, Trunc(PointEnd.Y) - 1);
+    end;
+end;
+
+procedure TFPalette.Draw;
+var
+  i: Integer;
+begin
+  for i := 0 to High(PalColors) do
+    Rects.Items[i].BrushF.Color := PalColors[i];
+  Rects.DrawAll(CanvasOut);
+  DoSelection(SelectedColor);
+end;
+
+procedure TFPalette.AddColor(Color: TColor);
+var
+  X1, X2, Y1, Y2: Integer;
+  NewRect: TRectangle;
+begin
+  SetLength(PalColors, length(PalColors) + 1);
+  PalColors[ High(PalColors)] := Color;
+  NewRect := TRectangle.Create(Zoomer);
+  NewRect.BrushF.Style := bsSolid;
+  Y1 := 1;
+  X1 := (length(PalColors) div 2) * IHeigth + 1;
+  if ((length(PalColors) mod 2) = 0) then
+  begin
+    if length(PalColors) > 1 then
+      Dec(X1, IHeigth);
+    if length(PalColors) > 0 then
+      Y1 := IHeigth + 1;
+  end;
+  X2 := X1 + IHeigth - 1;
+  Y2 := Y1 + IHeigth - 1;
+  with NewRect do
+  begin
+    PointStart := DoublePoint(X1, Y1);
+    PointEnd := DoublePoint(X2, Y2);
+    BrushF.Color := Color;
+    PenF.Style := psSolid;
+    Draw(CanvasOut);
+  end;
+  Rects.Add(NewRect);
+end;
+
+function TFPalette.GetIndex(X, Y: Integer): Integer;
+begin
+  Result := ((X + Abs(Trunc(Rects.Items[0].PointStart.X)) - 1) div IHeigth) * 2
+    + (Y div IHeigth);
+end;
+
+function TFPalette.Select(Index: Integer): TColor;
+begin
+  Result := $0;
+  if Index > High(PalColors) then
+    exit;
+  Result := PalColors[Index];
+  SelectedColor := Index;
+  Draw;
+  DoSelection(SelectedColor);
+end;
+
+procedure TFPalette.Delete(Index: Integer);
+var
+  i: Integer;
+begin
+  if Rects.Count <= 1 then
+    exit;
+  Rects.Delete(Rects.Count - 1);
+  for i := Index to High(PalColors) - 1 do
+    PalColors[i] := PalColors[i + 1];
+  SetLength(PalColors, length(PalColors) - 1);
+  if SelectedColor = Index then
+    SelectedColor := -1
+  else
+    Dec(SelectedColor);
+  Draw;
+end;
+
+procedure TFPalette.LoadFromFile(Path: string);
+var
+  f: TextFile;
+  i: Integer;
+  s: string;
+begin
+  Rects.Clear;
+  SetLength(PalColors, 0);
+  Assignfile(f, Path);
+  Reset(f);
+  Readln(f, s);
+  for i := 1 to StrToInt(s) do
+  begin
+    Readln(f, s);
+    AddColor(StringToColor(s));
+  end;
+end;
+
+procedure TFPalette.SaveToFile(Path: string);
+var
+  f: TextFile;
+  i: Integer;
+begin
+  Assignfile(f, Path);
+  Rewrite(f);
+  Writeln(f, Rects.Count);
+  for i := 0 to Rects.Count - 1 do
+    Writeln(f, ColorToString(PalColors[i]));
+  closefile(f);
+end;
+
+function TFPalette.Scroll(Tag, PWidth: Integer): boolean;
+var
+  i, X: Integer;
+begin
+  Result := false;
+  if ((PWidth > (Rects.Items[Rects.Count - 1] as TRectangle).PointEnd.X) and
+    (Tag = 1)) or ((Rects.Items[0].PointStart.X > 0) and (Tag = -1)) then
+    exit;
+  Result := true;
+  if Tag = 1 then
+    X := -IHeigth
+  else
+    X := IHeigth;
+  for i := 0 to Rects.Count - 1 do
+    Rects.Items[i].Move(DoublePoint(X, 0));
+  Draw;
+end;
+
+end.

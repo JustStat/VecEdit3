@@ -1,0 +1,5 @@
+Test
+ClassName=TText|TextFontStyle=2|TextFontSize=22|TextFontName=206|TextFontColor=clBlack|Start.X=64|Start.Y=108|DrawIt=-1|PointsCount=1|BtnTag=0|StringsCount=1|0=djdkfjgdkj|1=лорлорлорл|
+ClassName=TText|TextFontStyle=2|TextFontSize=22|TextFontName=206|TextFontColor=clRed|Start.X=225|Start.Y=211|DrawIt=-1|PointsCount=1|BtnTag=0|StringsCount=1|0=djdkfjgdkj|1=лорлорлорл|
+ClassName=TLine|PenWidth=1|PenColor=clBlack|PenStyle=0|BrushColor=clBlack|Start.X=35|Start.Y=361|DrawIt=-1|PointsCount=1|BtnTag=4|X0=35|Y0=261|X1=113|Y1=361
+ClassName=TLine|PenWidth=5|PenColor=clRed|PenStyle=2|BrushColor=clBlack|Start.X=179|Start.Y=372|DrawIt=-1|PointsCount=1|BtnTag=4|X0=179|Y0=303|X1=282|Y1=372

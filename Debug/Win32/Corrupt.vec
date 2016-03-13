@@ -1,0 +1,6 @@
+Test
+ClassName=TRectanglsddsfxcxce|PenWfsdffdfidth=1|PendsfffdsfsdfdColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=97|Start.Y=214|DrawIt=-1|PointsCount=1|BtnTag=5|X0=97|Y0=158|X1=251|Y1=214|BrushStyle=0
+ClassName=TRectangle|PenWidth=1|PenColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=225|Start.Y=265|DrawIt=-1|PointsCount=1|BtnTag=5|X0=225|Y0=197|X1=384|Y1=265|BrushStyle=0
+ClassName=TRoundRect|xccxcxPenColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=139|Start.Y=253|DrawIt=-1|PointsCount=1|BtnTag=7|X0=139|Y0=210|X1=305|Y1=253|BrushStyle=0|RoundValueX=50|RoundValueY=50
+ClassName=TEllipse|PenWidth=1|PenColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=205|Start.Y=184|DrawIt=-1|PointsCount=1|BtnTag=6|X0=205|Y0=40|X1=353|Y1=184|BrushStyle=0
+ClassName=TEllipse|PenWidth=1|PenColor=clBlack|PenStyle=0|BrushColor=clWhite|Start.X=166|Start.Y=298|DrawIt=-1|PointsCount=1|BtnTag=6|X0=166|Y0=129|X1=149|Y1=298|BrushStyle=0

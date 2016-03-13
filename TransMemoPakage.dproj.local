@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.340,=rtl.dcp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.987,=C:\Users\kirillvarlamov\Desktop\Многоугольники\VectroEdit3\TransMemo.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.005,=vcl.dcp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.265,C:\Users\kirillvarlamov\Documents\Embarcadero\Studio\Projects\Package1.dproj=C:\Users\kirillvarlamov\Desktop\Многоугольники\VectroEdit3\TransMemoPakage.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
